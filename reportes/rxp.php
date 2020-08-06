@@ -247,9 +247,10 @@ class PDF extends FPDF
             $pdf->SetXY(28, 179.9);
             $pdf->MultiCell(150, 5, "\n". $element['direccion'], 0,'');
             // $pdf->Cell(100,10,$element['direccion'] ,0,0,'');
-            $pdf->SetFont('Arial','B',10); 
-            $pdf->SetXY(70, 179.9);
-            $pdf->MultiCell(30,5,"\nCod: ".$element['cod_suministro'],0,'');
+            
+            //$pdf->SetFont('Arial','B',10); 
+            //$pdf->SetXY(70, 179.9);
+            //$pdf->MultiCell(30,5,"\nCod: ".$element['cod_suministro'],0,'');
             
             $pdf->SetFont('Arial','B',10); 
             $pdf->SetXY(110, 179.9);
