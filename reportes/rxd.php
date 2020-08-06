@@ -271,8 +271,8 @@ if(!$resConsult['res']){
         // $pdf->Cell(100,10,$element['direccion'] ,0,0,'');
 
         $pdf->SetFont('Arial','B',10); 
-        $pdf->SetXY(70, 179.9);
-        $pdf->MultiCell(30,5,"\nCod: ".$element['cod_suministro'],0,'');
+        $pdf->SetXY(65, 179.9);
+        $pdf->MultiCell(80,5,"\nCod: ".$element['cod_suministro'],1,'');
         
         $pdf->SetFont('Arial','B',10); 
         $pdf->SetXY(115, 179.9);
