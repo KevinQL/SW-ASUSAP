@@ -246,8 +246,8 @@ function listar_rs(valor) {
             data:'valor='+valor.trim(),
             success:function (resp) {
                 let valores = JSON.parse(resp);
-                console.log(valores);
-                return 0;
+                // console.log(valores);
+                // return 0;
                 htmlSumi=`<table class='table table-bordered'><thead><tr><th>#</th><th>Nombre AS.</th><th>Apellido AS.</th><th>Suministro</th><th>Direccion</th><th>año</th><th>mes</th><th>Seleccionar </th></tr></thead><tbody>`;
                 for(let i=0;i<valores.length;i++){
 

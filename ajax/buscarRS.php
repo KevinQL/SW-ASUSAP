@@ -26,7 +26,5 @@ if (isset($_POST['idV'])){
     echo $result;
 }
 
-// echo json_encode(['ok']);
-
 ?>
 
