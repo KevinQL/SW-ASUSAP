@@ -155,7 +155,7 @@
                                     </select>                                    
                                 </td>                              
                                 
-                                <td contenteditable="true" name="nr_casa<?=$cont?>" id="nr_casa<?=$cont?>"><?php echo $suministro['casa_nros']; ?></td>
+                                <td contenteditable="true" name="nr_casa<?=$cont?>" id="nr_casa<?=$cont?>"><?php echo $suministro['casa_nro']; ?></td>
                                 <td>
                                     <?php
                                         $indexEstado = $suministro['estado_corte'];                                         

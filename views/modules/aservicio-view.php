@@ -21,7 +21,7 @@
 <!--    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
 --></div>
 
-<?
+<?php
 require_once "./controllers/adminController.php";
 $insAdmin=new adminController();
 

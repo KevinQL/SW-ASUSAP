@@ -1,4 +1,4 @@
-<?
+<?php
 $AjaxRequest=true;
 require_once "../core/configSite.php";
 
@@ -9,7 +9,7 @@ if(!empty($val))
 {
     $valor=$_POST['valor'];
     $inst = new adminController();
-    $r=$inst ->listaRservicio($valor);
+    $r=$inst->listaRservicio($valor);
     //print_r($r);
     echo json_encode($r);
 }
@@ -26,4 +26,7 @@ if (isset($_POST['idV'])){
     echo $result;
 }
 
+// echo json_encode(['ok']);
+
+?>
 

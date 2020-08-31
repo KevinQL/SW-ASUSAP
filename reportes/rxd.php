@@ -87,6 +87,8 @@ if(!$resConsult['res']){
         $medidor = $element['tiene_medidor']?'Si':'No';    
         $cortado = $element['estado_corte']?'Si':'No';
         $esta_cancelado = $element['esta_cancelado']?'RECIBO CANCELADO':'FALTA CANCELAR';
+        //numero dirección:
+        $numeroDirec = $element['casa_nro'] == 0? ' / S.N' : ' / Nro. '.$element['casa_nro'];
 
         //verifica que sea una institución para solo imprimir el nombre
         $nombre_completo = ($element['categoria_suministro']=='Estatal')?utf8_decode($element['nombre']." ". $element['nombre_sum']):utf8_decode($element['apellido']." ". $element['nombre']." ".$element['nombre_sum']); 
@@ -126,7 +128,7 @@ if(!$resConsult['res']){
         $pdf->MultiCell(73,5,$nombre_completo,0,'');  //nombre de tituar
         $pdf->SetFont('Arial','B',7);
         $pdf->SetXY(31,44);
-        $pdf->Cell(50,5,$selectDireccion,0,0,'');    //direccion del titular 
+        $pdf->Cell(50,5,$selectDireccion . $numeroDirec,0,0,'');    //direccion del titular 
         $pdf->SetXY(15,46.5);
         $pdf->Cell(100,10,utf8_decode("SAN JERÓNIMO"),0,0,''); //distrito
         $pdf->SetXY(17,51.5);
@@ -176,8 +178,14 @@ if(!$resConsult['res']){
             $pdf->ln();
         }
         //CONTADOR deudas
-        $pdf->SetXY(10,135);
+        $pdf->SetXY(10,127);
         $pdf->Cell(100,5,"Cantidad deudas: {$element['contador_deuda']}",0,0,'');  
+
+        //info página web y correo electrónico
+        $pdf->SetXY(10,131);
+        $pdf->Cell(100,5,"Visitanos en www.asusap.com",0,0,''); //
+        $pdf->SetXY(10,134);
+        $pdf->Cell(100,5,"usuariosaguapotablesanjeronimo@gmail.com",0,0,''); //
         //ESTADO Corte
         $pdf->SetFont('Arial','B',7);
         $pdf->SetXY(5,140);

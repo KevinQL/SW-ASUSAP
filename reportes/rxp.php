@@ -61,6 +61,9 @@ class PDF extends FPDF
 
         while($element = $dataQuery->fetch(PDO::FETCH_ASSOC)){   
 
+            //numero dirección:
+            $numeroDirec = $element['casa_nro'] == 0? ' / S.N' : ' / Nro. '.$element['casa_nro'];
+
             $esta_cancelado = $element['esta_cancelado']?'RECIBO CANCELADO':'FALTA CANCELAR';                    
             //verifica que sea una institución para solo imprimir el nombre           
             
@@ -103,7 +106,7 @@ class PDF extends FPDF
             $pdf->MultiCell(73,5,$nombre_completo,0,'');  //nombre de tituar
             $pdf->SetFont('Arial','B',7);
             $pdf->SetXY(31,44);
-            $pdf->Cell(50,5,$element['direccion'],0,0,'');    //direccion del titular 
+            $pdf->Cell(50,5,$element['direccion'] . $numeroDirec,0,0,'');    //direccion del titular 
             $pdf->SetXY(15,46.5);
             $pdf->Cell(100,10,utf8_decode("SAN JERÓNIMO"),0,0,''); //distrito
             $pdf->SetXY(17,51.5);
@@ -135,7 +138,7 @@ class PDF extends FPDF
             /*
             $pdf->SetXY(10,139);
             $pdf->Cell(60,8,$esta_cancelado,1,0,'C'); // Está cancelado el recibo ??
-            */
+            */            
             //Imprime los meses endeudados
             $pdf->SetXY(90,85);   
             $total_suma_deudas=0;  
@@ -153,9 +156,16 @@ class PDF extends FPDF
                 $pdf->Cell(50,4,"S/. ".$value['monto_pagar'],0,0,'');                
                 $pdf->ln();
             }  
+
+            
             //CANTIDAD de deudas
-            $pdf->SetXY(10,135);
-            $pdf->Cell(100,5,"Cantidad deudas: {$element['contador_deuda']}",0,0,'');   
+            $pdf->SetXY(10,127);
+            $pdf->Cell(100,5,"Cantidad deudas: {$element['contador_deuda']}",0,0,'');
+            //info página web y correo electrónico
+            $pdf->SetXY(10,131);
+            $pdf->Cell(100,5,"Visitanos en www.asusap.com",0,0,''); //
+            $pdf->SetXY(10,134);
+            $pdf->Cell(100,5,"usuariosaguapotablesanjeronimo@gmail.com",0,0,''); //
             //ESTADO Corte
             $pdf->SetFont('Arial','B',7);
             $pdf->SetXY(5,140);

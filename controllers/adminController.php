@@ -672,9 +672,7 @@
 		public function recibosObtenerDataSumXdirec($direccion,$anio,$mes){
 			$direccion = trim($direccion);
 			$query="SELECT asociado.dni,asociado.nombre,asociado.apellido,suministro.cod_suministro,suministro.direccion,
-			 suministro.estado_corte,suministro.tiene_medidor,suministro.categoria_suministro,suministro.contador_deuda, suministro.nombre_sum,
-			 factura_recibo.anio,factura_recibo.mes,factura_recibo.fecha_emision,factura_recibo.fecha_vencimiento,
-			 factura_recibo.consumo, factura_recibo.monto_pagar,factura_recibo.esta_cancelado,factura_recibo.esta_impreso 
+			 suministro.estado_corte,suministro.tiene_medidor,suministro.categoria_suministro,suministro.contador_deuda, suministro.nombre_sum, suministro.casa_nro, factura_recibo.anio,factura_recibo.mes,factura_recibo.fecha_emision,factura_recibo.fecha_vencimiento,factura_recibo.consumo, factura_recibo.monto_pagar,factura_recibo.esta_cancelado,factura_recibo.esta_impreso 
 			 FROM asociado INNER JOIN suministro ON asociado.dni=suministro.asociado_dni 
 			 INNER JOIN factura_recibo ON factura_recibo.suministro_cod_suministro=suministro.cod_suministro 
 			 WHERE suministro.estado_corte<>2 AND suministro.contador_deuda>=1 AND suministro.direccion = '$direccion' AND
@@ -692,7 +690,7 @@
 			
 			$cod_sum = trim($cod_sum);
 			$query="SELECT asociado.dni,asociado.nombre,asociado.apellido,suministro.cod_suministro,suministro.direccion,
-			 suministro.estado_corte,suministro.tiene_medidor,suministro.categoria_suministro,suministro.contador_deuda, suministro.nombre_sum,
+			 suministro.estado_corte,suministro.tiene_medidor,suministro.categoria_suministro,suministro.contador_deuda, suministro.nombre_sum, suministro.casa_nro,
 			 factura_recibo.anio,factura_recibo.mes,factura_recibo.fecha_emision,factura_recibo.fecha_vencimiento,
 			 factura_recibo.consumo, factura_recibo.monto_pagar,factura_recibo.esta_cancelado,factura_recibo.esta_impreso 
 			 FROM asociado INNER JOIN suministro ON asociado.dni=suministro.asociado_dni 
@@ -788,7 +786,7 @@
 
             if (!empty($valorS)) {
 
-                $conexion = mainModel::connect();
+                // $conexion = mainModel::connect();
                 $query1 ="SELECT f.nombre,f.apellido,s.cod_suministro,s.direccion FROM 
                  suministro s INNER JOIN asociado f ON f.dni = s.asociado_dni
                  WHERE s.cod_suministro  like '%" . $valorS . "%' OR f.nombre  like '%" . $valorS . "%'  OR f.apellido  like '%" . $valorS . "%'  OR s.direccion  like '%" . $valorS . "%' LIMIT 20";
@@ -814,8 +812,7 @@
                 return $registroModal;
 
             }
-
-
+			return "ok";
 
         }
 
@@ -1245,7 +1242,7 @@
 
 		public function dataReciboXanio($cod_sum){
 			$fecha_hoy = self::consultar_fecha_actual();
-			$query = "SELECT factura_recibo_anio.cod_sum_anio,factura_recibo_anio.anio,factura_recibo_anio.del_mes,factura_recibo_anio.monto,suministro.direccion,suministro.categoria_suministro,asociado.nombre,asociado.apellido,asociado.telefono 
+			$query = "SELECT factura_recibo_anio.cod_sum_anio,factura_recibo_anio.anio,factura_recibo_anio.del_mes,factura_recibo_anio.monto,suministro.direccion,suministro.categoria_suministro, suministro.casa_nro, asociado.nombre,asociado.apellido,asociado.telefono 
 			FROM factura_recibo_anio INNER JOIN suministro 
 			ON suministro.cod_suministro=factura_recibo_anio.cod_sum_anio INNER JOIN asociado 
 			ON asociado.dni=suministro.asociado_dni 

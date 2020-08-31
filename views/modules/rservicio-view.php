@@ -37,7 +37,7 @@
         </div>
 
         <!--LOS DATOS DE SERVICIO-->
-        <?
+        <?php
         require_once "./controllers/adminController.php";
         //$insAdmin=new GestorSlidersC();
         $insAdmin=new adminController();
@@ -138,7 +138,7 @@ ids
 
 
 
-                    <div class="col-xs-12"
+                    <div class="col-xs-12">
                     <div class="tab-pane fade" id="list">
 
                         <?php
