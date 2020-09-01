@@ -90,7 +90,7 @@
 	}
 
 	public function obtenerDireccionCalleController($keyPress){
-		$query = "SELECT nombre FROM direccion_calle WHERE nombre LIKE '%$keyPress%'";
+		$query = "SELECT nombre FROM direccion_calle WHERE nombre LIKE '%$keyPress%' AND estado=1";
 		$objRes = mainModel::execute_single_query($query);
 		if($objRes->rowCount()>=1){
 			$arrDirecc = [];

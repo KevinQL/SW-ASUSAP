@@ -50,7 +50,7 @@
                 <div class="col-md-3 form-group row label-floating">
                     <div class="col-md-12">
                         <label for="direccionAsoc" class="col-md-4 control-label">DIRECIÓN</label>
-                        <select class="form-control" id="direccionAsoc" name="direccionAsoc" ">
+                        <select class="form-control" id="direccionAsoc" name="direccionAsoc">
                             <option>TODOS</option>
                             <?=$htmlDirecciones?>
                         </select>
