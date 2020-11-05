@@ -583,7 +583,7 @@ function generarMonto($consumo, categoria){
 					if($consumo<=20){
 						$val1=20*0.60;
 					}else {
-						$val1=10;                    
+						$val1=12; //10 
 						$consumo-=20;
 						$val2 = $consumo*0.95;
 					}
